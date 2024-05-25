@@ -25,6 +25,14 @@ Go to `http://localhost:8000/` to use the app.
 1. Accuracy: The RandomForest model had the best and perfect precision and recall on the validation dataset. The confusion matrix indicated the same.
 2. Feature Importance: The feature importance showed that features that show the prefix of the addresses, and certain characters in the addresses hold the most importnace when determining features by the RandomForest model.
 
+## Deployment testing:
+
+
+https://github.com/StarkTony2056/crypto-address-classifier/assets/91143608/fd285f2b-1176-4ec4-9cb4-996c4428d7f5
+
+
+
+
 ## Scope for Future Improvement:
 
 1. **Enhanced Feature Engineering**
