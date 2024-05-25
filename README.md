@@ -1,34 +1,72 @@
-##Step 1: Data Collection
-Objective: Gather a diverse dataset of cryptocurrency addresses including BTC, ETH, TRX, and potentially other cryptocurrencies.
+# Cryptocurrency Address Classification
 
-Actions:
+The problem is to develop a machine learning algorithm that can accurately classify cryptocurrency addresses into different types, such as BTC (bitcoin), Ethereum (ETH), Tron (TRX), or any other type.
 
-Sources: Collect data from blockchain explorers, cryptocurrency forums, or datasets available on GitHub or Kaggle.
-Labels: Ensure each address is labeled with its respective cryptocurrency type.
-Format: Store the dataset in a structured format (e.g., CSV, JSON) with columns like address and label.
-Step 2: Data Preprocessing
-Objective: Convert the raw cryptocurrency addresses into a format suitable for machine learning models.
+The provided model classifies the input cryptocurrency addresses into BTC (bitcoin), Ethereum (ETH), DOGE (Dogecoin), and LTC (litecoin). The addresses of type Tron could not be acquired and hence it has been excluded. But there is considerable area of improvement in the model as more data can be collected on other cryptocurrency types.
 
-Actions:
+## How to run?
 
-Sanitize: Remove any invalid addresses and ensure each address is in the correct format for its blockchain.
-Normalize: Convert addresses to a consistent case (usually lowercase).
-Validation: Use checksum validation where applicable to ensure address validity.
-Step 3: Feature Engineering
-Objective: Extract features from the addresses to help in classification.
+`pip install -r requirements.txt`
 
-Actions:
+Then, run the Flask server:
+`python app.py`
 
-Length: Extract the length of each address.
-Character Frequency: Calculate the frequency of each character in the address.
-Prefix: Note the prefix of the address (e.g., BTC addresses often start with 1, 3, or bc1).
-Checksum Validation: Include a binary feature indicating whether the address passed checksum validation.
-Blockchain-Specific Features: Extract any other blockchain-specific features that can help in classification (e.g., bech32 encoding for BTC SegWit addresses).
-Step 4: Model Selection and Training
-Objective: Train machine learning models to classify the cryptocurrency addresses.
+Next, run the application frontend:
+`python -m http.server`
 
-Actions:
+Go to `http://localhost:8000/` and use the app.
 
-Algorithms: Consider using decision trees, random forests, support vector machines (SVM), and neural networks.
-Training: Split the dataset into training and validation sets (e.g., 80/20 split).
-Hyperparameters: Tune hyperparameters using techniques like grid search or random search.
+## All the steps of the ML pipeline will be found in `crypto_datacollection.ipynb` and `crypto_address_classification.ipynb` files.
+
+## Scope for Future Improvement:
+
+**1. **Enhanced Feature Engineering\*\*
+
+-   **Advanced Textual Features:** Explore additional text-based features, such as n-grams or sequence patterns, which might capture subtle differences between address types.
+-   **Blockchain-Specific Metadata:** Incorporate metadata from blockchain explorers, such as transaction volume, age of the address, or network activity, to provide context beyond the address string itself.
+-   **Graph-Based Features:** Analyze the transaction graph associated with addresses to derive features related to address connectivity, clustering, and network centrality.
+
+**2. **Increased Dataset Diversity and Size\*\*
+
+-   **Additional Cryptocurrencies:** Include a broader range of cryptocurrencies in the dataset to improve the model's generalization and robustness.
+-   **Larger Dataset:** Collect a more extensive dataset to provide the model with more examples, which can enhance its learning capabilities and reduce overfitting.
+-   **Synthetic Data Generation:** Use techniques like data augmentation or generative adversarial networks (GANs) to create synthetic addresses that can help balance the dataset and introduce more variability.
+
+**3. **Model Enhancements\*\*
+
+-   **Ensemble Methods:** Combine multiple models (e.g., bagging, boosting, stacking) to leverage their strengths and improve overall classification performance.
+-   **Deep Learning:** Experiment with deep learning architectures, such as recurrent neural networks (RNNs) or transformers, which can capture sequential and contextual information in address strings more effectively.
+-   **AutoML Tools:** Utilize automated machine learning (AutoML) tools to automatically search for the best model architecture and hyperparameters.
+
+**4. **Model Interpretability and Explainability\*\*
+
+-   **SHAP Values:** Use SHapley Additive exPlanations (SHAP) to understand the contribution of each feature to the model's predictions, enhancing transparency.
+-   **LIME:** Implement Local Interpretable Model-agnostic Explanations (LIME) to provide localized interpretations of model predictions, helping to identify specific features influencing each classification.
+
+**5. **Improved Validation and Testing\*\*
+
+-   **Cross-Validation:** Use k-fold cross-validation to ensure that the model's performance is consistent across different subsets of the data.
+-   **Robust Testing:** Test the model on unseen data from different sources or time periods to assess its generalization capabilities and robustness.
+
+**6. **Scalability and Deployment Enhancements\*\*
+
+-   **Optimized Deployment:** Optimize the model for faster inference times using techniques like model quantization or distillation.
+-   **Scalable Infrastructure:** Deploy the model using scalable cloud-based solutions (e.g., AWS SageMaker, Google AI Platform) to handle high volumes of requests.
+-   **Monitoring and Maintenance:** Implement monitoring tools to track the model's performance in production and set up automated alerts for significant performance degradation.
+
+**7. **User Interface and Integration\*\*
+
+-   **API Enhancements:** Develop a comprehensive API with detailed documentation, examples, and error handling to facilitate integration with other systems.
+-   **User Interface:** Create a user-friendly web interface or mobile app that allows users to input addresses and receive real-time classification results.
+
+**8. **Security and Privacy Considerations\*\*
+
+-   **Data Privacy:** Ensure that the handling of addresses complies with relevant data privacy regulations and best practices.
+-   **Security:** Implement robust security measures to protect the deployed model and API from malicious attacks and unauthorized access.
+
+**9. **Community and Feedback\*\*
+
+-   **Community Involvement:** Engage with the cryptocurrency and machine learning communities to gather feedback, validate results, and identify new features or improvements.
+-   **Continuous Learning:** Implement mechanisms for the model to learn continuously from new data, adapting to changes in address patterns and emerging cryptocurrencies.
+
+By focusing on these areas, the model can be continually improved to deliver more accurate, reliable, and insightful classifications of cryptocurrency addresses.
